@@ -222,9 +222,12 @@ auc=performance(prbsig2,measure="auc")
 auc=auc@y.values[[1]]
 auc
 #Confusion matrix
+library(caret)
 y_pred <- ifelse(test$score > 0.5, 1 ,0)
 cm <- table(test$Churn, y_pred)
 cm
+confusionMatrix( table(test$Churn, y_pred))
+
 #Efficency
 Efficency <- sum(diag(cm))/sum(cm)
 Efficency
